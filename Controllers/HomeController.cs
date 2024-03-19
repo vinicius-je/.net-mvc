@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using Microsoft.EntityFrameworkCore;
 using Todo.Data;
 using Todo.Model;
@@ -8,25 +9,27 @@ namespace Todo.Controller
 	[ApiController]
 	public class HomeController : ControllerBase
 	{
-		[HttpGet("/todos")]
-		public IActionResult Get([FromServices] AppDbContext context)
+        [EnableQuery(PageSize = 3)]
+        [HttpGet("/todos")]
+        public IQueryable<TodoModel> Get([FromServices] AppDbContext context)
 		{
-			return Ok(context.Todos.ToList());
+			return context.Todos.ToList().AsQueryable();
 		}
-		
-		[HttpGet("/todos/{id:int}")]
-		public IActionResult GetById(
+
+        [EnableQuery]
+        [HttpGet("{id}")]
+        public IActionResult GetById(
 			[FromRoute] int id,
 			[FromServices] AppDbContext context)
-		{
-			var todo = context.Todos.FirstOrDefault(x => x.Id == id);
-			
-			if (todo == null) return NotFound();
-			
-			return Ok(todo);
-		}
-		
-		[HttpPost("/todos")]
+        {
+			var todo = context.Todos.Where(x => x.Id == id).AsQueryable();
+
+            if (todo == null) return NotFound();
+
+            return Ok(todo);
+        }
+
+        [HttpPost("/todos")]
 		public IActionResult Post(
 			[FromBody] TodoModel todo,
 			[FromServices] AppDbContext context)

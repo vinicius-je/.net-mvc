@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\curso\\Todo\\Todo.csproj": {}
+    "C:\\repositorios\\.net-mvc\\Todo.csproj": {}
   },
   "projects": {
-    "C:\\curso\\Todo\\Todo.csproj": {
+    "C:\\repositorios\\.net-mvc\\Todo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\curso\\Todo\\Todo.csproj",
+        "projectUniqueName": "C:\\repositorios\\.net-mvc\\Todo.csproj",
         "projectName": "Todo",
-        "projectPath": "C:\\curso\\Todo\\Todo.csproj",
+        "projectPath": "C:\\repositorios\\.net-mvc\\Todo.csproj",
         "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
-        "outputPath": "C:\\curso\\Todo\\obj\\",
+        "outputPath": "C:\\repositorios\\.net-mvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -39,12 +39,29 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.OData": {
+              "target": "Package",
+              "version": "[8.2.5, )"
+            },
+            "Microsoft.AspNetCore.OData.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -54,6 +71,10 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.2, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [
@@ -75,7 +96,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.201/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
